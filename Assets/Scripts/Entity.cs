@@ -28,7 +28,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     protected int facingDir=1;
     protected bool facingRight=true;
-    protected bool canMove=true;    
+    [SerializeField]protected bool canMove=true;  
+    [SerializeField]protected bool canAttack;  
     protected virtual void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
@@ -77,7 +78,7 @@ public class Entity : MonoBehaviour
     }
     protected virtual void HandleAttack()
     {
-        if (isGrounded)
+        if (isGrounded && canAttack)
         {
             anim.SetTrigger("attack");
         }
@@ -92,7 +93,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    private void TakeDamage()
+    protected virtual void TakeDamage()
     {
         if(isDead) return;
         currentHealth--;

@@ -6,7 +6,7 @@ public class PlayerScript : Entity
     public float playerSpeed=3.5f;
     [SerializeField] private float jumpForce=8;
     private float xinput;
-    private bool canJump=true;
+    [SerializeField]private bool canJump=true;
 
     protected override void Update()
     {
@@ -33,6 +33,7 @@ public class PlayerScript : Entity
         if (isGrounded && canJump )
         {
             rb.linearVelocity=new Vector2(rb.linearVelocity.x,jumpForce);
+            SoundManager.Instance.PlaySound2D("Jump");
         }
     }
     public override void enableJumpAndMove(bool enabel)
