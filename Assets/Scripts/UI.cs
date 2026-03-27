@@ -58,10 +58,7 @@ public class UI : MonoBehaviour
     }
     public void enableTimerUI()
     {
-        if (player.position.x > charToProtect.position.x)
-        {
-            timerUI.SetActive(true);
-        }
+        
     }
     private void ShowStep()
     {
